@@ -55,12 +55,37 @@
 </section>
 
 <script>
-  document.getElementById('enrollForm')?.addEventListener('submit', (e) => {
+  const WEBHOOK = 'https://n8n.orangerea.ru/webhook/c0d1a978-0b89-473d-a6b4-56f6fbd5073f';
+
+  document.getElementById('enrollForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const btn = e.currentTarget.querySelector('.form-submit') as HTMLButtonElement;
-    btn.textContent = '✓ Заявка отправлена!';
-    btn.style.background = '#4CAF50';
+    const form = e.currentTarget as HTMLFormElement;
+    const btn = form.querySelector('.form-submit') as HTMLButtonElement;
+
+    btn.textContent = 'Отправляем...';
     btn.disabled = true;
+
+    const data = {
+      name: (form.elements.namedItem('name') as HTMLInputElement).value,
+      phone: (form.elements.namedItem('phone') as HTMLInputElement).value,
+      service: (form.elements.namedItem('service') as HTMLSelectElement).value,
+      contact: (form.querySelector('input[name="contact"]:checked') as HTMLInputElement)?.value,
+    };
+
+    try {
+      await fetch(WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      btn.textContent = '✓ Заявка отправлена!';
+      btn.style.background = '#4CAF50';
+      form.reset();
+    } catch {
+      btn.textContent = 'Ошибка — попробуйте ещё раз';
+      btn.style.background = '#e53935';
+      btn.disabled = false;
+    }
   });
 </script>
 
