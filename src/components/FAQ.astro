@@ -1,0 +1,109 @@
+---
+const faqs = [
+  {
+    q: 'С какого возраста можно записаться?',
+    a: 'Принимаем детей от 3 лет. Для малышей до 5 лет занятия проходят в мини-группах по 4–6 человек, занятия длятся 45 минут.',
+  },
+  {
+    q: 'Нужно ли приносить свои материалы?',
+    a: 'Нет, все необходимые материалы — глина, краски, бумага, кисти — уже есть в студии и включены в стоимость занятия.',
+  },
+  {
+    q: 'Что будет, если мы пропустим занятие?',
+    a: 'Пропущенное занятие можно перенести в течение месяца. Абонемент не сгорает — мы ценим ваше время и деньги.',
+  },
+  {
+    q: 'Как долго длится одно занятие?',
+    a: 'В зависимости от выбранного абонемента: 45, 60 или 90 минут. Для самых маленьких рекомендуем начать с 45 минут.',
+  },
+  {
+    q: 'Можно ли ходить сразу на несколько направлений?',
+    a: 'Да! Вы можете совмещать лепку, рисование и живопись — выбирайте универсальный абонемент для большей гибкости.',
+  },
+  {
+    q: 'Как организован день рождения в студии?',
+    a: 'Мы проводим тематический мастер-класс (1–3 часа) для группы от 5 детей. Каждый гость уходит с готовой поделкой. Стоимость от 13 600 ₽.',
+  },
+];
+---
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">FAQ</span>
+      <h2>Частые вопросы</h2>
+    </div>
+    <div class="faq__list">
+      {faqs.map((item, i) => (
+        <details class="faq-item" open={i === 0}>
+          <summary class="faq-item__q">
+            {item.q}
+            <span class="faq-item__icon">+</span>
+          </summary>
+          <div class="faq-item__a">{item.a}</div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq { background: #FAFAFA; }
+
+  .faq__list {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .faq-item {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .faq-item__q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    gap: 12px;
+  }
+
+  .faq-item__q::-webkit-details-marker { display: none; }
+
+  .faq-item__icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--orange-light);
+    color: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 400;
+    transition: transform 0.2s;
+  }
+
+  details[open] .faq-item__icon {
+    transform: rotate(45deg);
+    background: var(--orange);
+    color: #fff;
+  }
+
+  .faq-item__a {
+    padding: 0 24px 20px;
+    font-size: 15px;
+    color: var(--text-light);
+    line-height: 1.65;
+  }
+</style>

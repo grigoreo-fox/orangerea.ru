@@ -1,0 +1,149 @@
+---
+const services = [
+  {
+    id: 'sculpting',
+    icon: '🏺',
+    title: 'Лепка',
+    desc: 'Работа с глиной и пластилином развивает мелкую моторику, образное мышление и пространственное воображение.',
+    age: 'от 3 лет',
+    duration: '45–90 мин',
+    color: '#FFF3E5',
+    accent: '#F07B1F',
+  },
+  {
+    id: 'drawing',
+    icon: '✏️',
+    title: 'Рисование',
+    desc: 'Карандаши, фломастеры, акварель — учим видеть форму, цвет и композицию через разнообразные техники.',
+    age: 'от 3 лет',
+    duration: '45–90 мин',
+    color: '#EAF6FF',
+    accent: '#2196F3',
+  },
+  {
+    id: 'painting',
+    icon: '🖌️',
+    title: 'Живопись',
+    desc: 'Акрил и масло на холсте. Дети создают настоящие картины, которые украсят дом или станут подарком.',
+    age: 'от 5 лет',
+    duration: '90 мин',
+    color: '#F0FFF4',
+    accent: '#4CAF50',
+  },
+  {
+    id: 'events',
+    icon: '🎉',
+    title: 'Праздники',
+    desc: 'Дни рождения и мастер-классы для группы — весело, творчески и с готовыми поделками в подарок.',
+    age: 'от 3 лет',
+    duration: '1–3 часа',
+    color: '#FFF0F6',
+    accent: '#E91E8C',
+  },
+];
+---
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Чем занимаемся</span>
+      <h2>Наши услуги</h2>
+      <p class="section-desc">Выберите направление — или запишитесь на пробный урок, чтобы найти любимое.</p>
+    </div>
+    <div class="services__grid">
+      {services.map(s => (
+        <div class="service-card" id={s.id} style={`--card-bg:${s.color};--card-accent:${s.accent}`}>
+          <div class="service-card__icon">{s.icon}</div>
+          <h3 class="service-card__title">{s.title}</h3>
+          <p class="service-card__desc">{s.desc}</p>
+          <div class="service-card__meta">
+            <span>👤 {s.age}</span>
+            <span>⏱ {s.duration}</span>
+          </div>
+          <a href="#enrollment" class="service-card__link">Записаться →</a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .section-desc {
+    font-size: 17px;
+    color: var(--text-light);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .service-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+  }
+
+  .service-card__icon {
+    font-size: 40px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .service-card__title {
+    color: var(--card-accent);
+    font-size: 22px;
+  }
+
+  .service-card__desc {
+    font-size: 15px;
+    color: var(--text-light);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .service-card__meta {
+    display: flex;
+    gap: 16px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-light);
+    padding: 12px 0;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .service-card__link {
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--card-accent);
+    letter-spacing: 0.3px;
+    transition: gap 0.15s;
+  }
+
+  .service-card__link:hover { opacity: 0.8; }
+
+  @media (max-width: 1000px) {
+    .services__grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .services__grid { grid-template-columns: 1fr; }
+  }
+</style>

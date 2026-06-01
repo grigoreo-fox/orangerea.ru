@@ -1,0 +1,133 @@
+---
+const reviews = [
+  {
+    name: 'Анна К.',
+    child: 'Мама Миши, 5 лет',
+    text: 'Сын ходит уже полгода и каждый раз с нетерпением ждёт занятий. Педагоги невероятно терпеливые и творческие. Рекомендую всем!',
+    rating: 5,
+  },
+  {
+    name: 'Елена В.',
+    child: 'Мама Сони, 7 лет',
+    text: 'Дочь записалась на лепку, а теперь ходит ещё и на рисование. Работы поражают — не верится, что их сделал ребёнок! Спасибо Оранжерее.',
+    rating: 5,
+  },
+  {
+    name: 'Дмитрий П.',
+    child: 'Папа Коли, 9 лет',
+    text: 'Провели день рождения в Оранжерее. Все дети были в восторге, унесли домой собственноручно слепленные фигурки. Организация на высоте.',
+    rating: 5,
+  },
+  {
+    name: 'Ольга Р.',
+    child: 'Мама Маши, 4 года',
+    text: 'Нам 4 годика, занимаемся три месяца. Маша стала более внимательной и усидчивой. Уютная студия, приятная атмосфера — мы очень довольны.',
+    rating: 5,
+  },
+];
+---
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Отзывы</span>
+      <h2>Что говорят родители</h2>
+    </div>
+    <div class="reviews__grid">
+      {reviews.map(r => (
+        <div class="review-card">
+          <div class="review-card__stars">
+            {'★'.repeat(r.rating)}
+          </div>
+          <p class="review-card__text">«{r.text}»</p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">{r.name[0]}</div>
+            <div>
+              <div class="review-card__name">{r.name}</div>
+              <div class="review-card__role">{r.child}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews { background: #FAFAFA; }
+
+  .reviews__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .review-card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .review-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+
+  .review-card__stars {
+    color: #FFB800;
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  .review-card__text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    flex: 1;
+  }
+
+  .review-card__author {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid #F0F0F0;
+  }
+
+  .review-card__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--orange);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .review-card__name {
+    font-weight: 800;
+    font-size: 14px;
+  }
+
+  .review-card__role {
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: 600;
+  }
+
+  @media (max-width: 1000px) {
+    .reviews__grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .reviews__grid { grid-template-columns: 1fr; }
+  }
+</style>

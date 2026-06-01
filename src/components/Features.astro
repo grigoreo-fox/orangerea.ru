@@ -1,0 +1,95 @@
+---
+const features = [
+  { icon: '👥', title: '6–8 детей в группе', desc: 'Педагог уделяет время каждому ребёнку.' },
+  { icon: '📚', title: 'Авторская методика', desc: 'Пошаговая программа от простого к сложному.' },
+  { icon: '🗓️', title: 'Гибкий график', desc: 'Выбирайте удобное время из нескольких групп.' },
+  { icon: '🎁', title: 'Пропуск не сгорит', desc: 'Оплаченные занятия переносятся, абонемент не горит.' },
+  { icon: '🏫', title: '3 студии в СПб', desc: 'Народного Ополчения, Коломяжский, Морская набережная.' },
+  { icon: '⭐', title: 'Опытные педагоги', desc: 'Художники с педагогическим образованием и любовью к детям.' },
+];
+---
+<section class="features" id="about">
+  <div class="container">
+    <div class="features__inner">
+      <div class="features__text">
+        <span class="section-label">Почему мы</span>
+        <h2>Раскрываем<br />талант каждого</h2>
+        <p>Мы верим, что творчество — это не привилегия избранных, а естественная потребность каждого ребёнка. Наша задача — создать пространство, где дети смело экспериментируют и радуются результату.</p>
+        <a href="#enrollment" class="btn btn-orange" style="margin-top: 32px;">Записаться на урок</a>
+      </div>
+      <div class="features__grid">
+        {features.map(f => (
+          <div class="feature">
+            <div class="feature__icon">{f.icon}</div>
+            <div>
+              <div class="feature__title">{f.title}</div>
+              <div class="feature__desc">{f.desc}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .features {
+    background: #FAFAFA;
+  }
+
+  .features__inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .features__text p {
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-top: 16px;
+  }
+
+  .features__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .feature {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: #fff;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  .feature__icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .feature__title {
+    font-weight: 800;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  .feature__desc {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 900px) {
+    .features__inner { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  @media (max-width: 500px) {
+    .features__grid { grid-template-columns: 1fr; }
+  }
+</style>

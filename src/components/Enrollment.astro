@@ -1,0 +1,178 @@
+---
+---
+<section class="enrollment" id="enrollment">
+  <div class="container">
+    <div class="enrollment__inner">
+      <div class="enrollment__text">
+        <span class="section-label">Запись</span>
+        <h2>Первый урок — бесплатно!</h2>
+        <p>Запишитесь на пробное занятие и посмотрите, как проходят уроки в Оранжерее. Без обязательств — просто приходите и творите.</p>
+        <ul class="enrollment__perks">
+          <li>✅ Полноценное занятие 45 минут</li>
+          <li>✅ Все материалы предоставляем</li>
+          <li>✅ Педагог познакомится с ребёнком</li>
+          <li>✅ Готовая работа заберёте домой</li>
+        </ul>
+      </div>
+      <form class="enrollment__form" id="enrollForm">
+        <div class="form-group">
+          <label for="name">Имя ребёнка и родителя</label>
+          <input type="text" id="name" name="name" placeholder="Например: Миша и Анна" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Телефон</label>
+          <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required />
+        </div>
+        <div class="form-group">
+          <label for="service">Направление</label>
+          <select id="service" name="service">
+            <option value="">Выберите направление</option>
+            <option value="sculpting">Лепка</option>
+            <option value="drawing">Рисование</option>
+            <option value="painting">Живопись</option>
+            <option value="event">День рождения / мастер-класс</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Удобный способ связи</label>
+          <div class="contact-methods">
+            <label class="radio-label">
+              <input type="radio" name="contact" value="phone" checked /> Телефон
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="contact" value="telegram" /> Telegram
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="contact" value="vk" /> VK
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-orange form-submit">Записаться на бесплатный урок</button>
+        <p class="form-note">Нажимая кнопку, вы соглашаетесь с <a href="#">политикой конфиденциальности</a></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById('enrollForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = e.currentTarget.querySelector('.form-submit') as HTMLButtonElement;
+    btn.textContent = '✓ Заявка отправлена!';
+    btn.style.background = '#4CAF50';
+    btn.disabled = true;
+  });
+</script>
+
+<style>
+  .enrollment {
+    background: linear-gradient(135deg, var(--orange) 0%, #D96A10 100%);
+    color: #fff;
+  }
+
+  .enrollment .section-label {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+  }
+
+  .enrollment h2 { color: #fff; }
+
+  .enrollment__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .enrollment__text p {
+    font-size: 16px;
+    opacity: 0.9;
+    line-height: 1.7;
+    margin-top: 16px;
+    margin-bottom: 28px;
+  }
+
+  .enrollment__perks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .enrollment__perks li {
+    font-size: 15px;
+    font-weight: 700;
+    opacity: 0.95;
+  }
+
+  .enrollment__form {
+    background: #fff;
+    border-radius: 24px;
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 14px 16px;
+    border: 2px solid #E8E8E8;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: var(--orange);
+  }
+
+  .contact-methods {
+    display: flex;
+    gap: 20px;
+  }
+
+  .radio-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+  }
+
+  .radio-label input { accent-color: var(--orange); }
+
+  .form-submit { width: 100%; text-align: center; font-size: 15px; }
+
+  .form-note {
+    font-size: 12px;
+    color: var(--text-light);
+    text-align: center;
+  }
+
+  .form-note a { color: var(--orange); font-weight: 700; }
+
+  @media (max-width: 900px) {
+    .enrollment__inner { grid-template-columns: 1fr; gap: 40px; }
+  }
+</style>
