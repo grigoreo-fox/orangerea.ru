@@ -3,12 +3,7 @@
 <header class="header">
   <div class="container header__inner">
     <a href="/" class="logo">
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" fill="#F07B1F"/>
-        <path d="M20 8C14.5 8 10 12.5 10 18C10 21.5 11.8 24.6 14.5 26.5V30C14.5 30.8 15.2 31.5 16 31.5H24C24.8 31.5 25.5 30.8 25.5 30V26.5C28.2 24.6 30 21.5 30 18C30 12.5 25.5 8 20 8Z" fill="white"/>
-        <rect x="17" y="30" width="6" height="3" rx="1.5" fill="white"/>
-      </svg>
-      <span>Оранжерея</span>
+      <img src="/logo.png" alt="Оранжерея" height="36" />
     </a>
 
     <nav class="nav" id="nav">
@@ -75,11 +70,12 @@
   .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 20px;
-    font-weight: 900;
-    color: var(--orange);
     flex-shrink: 0;
+  }
+
+  .logo img {
+    height: 36px;
+    width: auto;
   }
 
   .nav__list {
